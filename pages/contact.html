@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Contact Us | Arkan Arabia Logistics</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#26348a",
+            "on-secondary-fixed": "#000e5e",
+            "inverse-surface": "#313030",
+            "on-secondary": "#ffffff",
+            "tertiary-container": "#484f56",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#1b4a9f",
+            "tertiary": "#31383f",
+            "secondary": "#4957ad",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#303e94",
+            "on-surface": "#1c1b1b",
+            "tertiary-fixed": "#dce3eb",
+            "primary-fixed": "#d9e2ff",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#dee0ff",
+            "error": "#ba1a1a",
+            "surface-tint": "#315bb0",
+            "surface-dim": "#dcd9d9",
+            "surface-variant": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#40484e",
+            "on-primary-fixed": "#001945",
+            "on-primary": "#ffffff",
+            "outline": "#747783",
+            "surface-bright": "#fcf9f8",
+            "on-primary-container": "#a6bfff",
+            "surface-container": "#f0edec",
+            "background": "#fcf9f8",
+            "primary": "#00337d",
+            "on-tertiary-fixed": "#151c22",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#bac1c8",
+            "on-surface-variant": "#434652",
+            "on-background": "#1c1b1b",
+            "surface-container-low": "#f6f3f2",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#0d4297",
+            "secondary-container": "#94a2fe",
+            "surface": "#fcf9f8",
+            "outline-variant": "#c3c6d4",
+            "surface-container-high": "#eae7e7",
+            "inverse-on-surface": "#f3f0ef",
+            "secondary-fixed-dim": "#bbc3ff",
+            "surface-container-highest": "#e5e2e1",
+            "inverse-primary": "#b0c6ff",
+            "tertiary-fixed-dim": "#c0c7cf"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "lg": "48px",
+            "container-max": "1440px",
+            "gutter": "24px",
+            "xl": "80px",
+            "xs": "4px",
+            "sm": "12px",
+            "base": "8px",
+            "md": "24px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "h3": ["Manrope"],
+            "display-xl": ["Manrope"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "h1-mobile": ["Manrope"],
+            "h2": ["Manrope"],
+            "h1": ["Manrope"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "h3": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "display-xl": ["72px", {"lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "h1-mobile": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+            "h2": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+            "h1": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #00337d 0%, #1b4a9f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .primary-gradient {
+      background: linear-gradient(135deg, #1b4a9f 0%, #29378D 100%);
+    }
+    .map-pin-pulse {
+      position: relative;
+    }
+    .map-pin-pulse::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: inherit;
+      border-radius: inherit;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    /* Scroll reveal */
+    .ct-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .ct-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Details chevron */
+    details summary::-webkit-details-marker { display: none; }
+    details[open] summary .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.3s ease; }
+  </style>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-white">
+
+  <div id="site-header"></div>
+
+  <!-- ── HERO ── -->
+  <section class="relative h-[70vh] min-h-[600px] flex items-center overflow-hidden pt-20">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent z-10"></div>
+      <img alt="Arkan Arabia Control Center" class="w-full h-full object-cover"
+           src="https://lh3.googleusercontent.com/aida/AP1WRLtOeI8bPgB7SfBIziiT6vdvPUeb3X7NUuiCErsICC_d5wGJgM5-GjLRaEo3EGsQT6al-uAbPsXlSWkbcM7GlcG18dEGLy1NjR_whSQaMzBirZ3AA7r1jHa8eBL9nBPmY_vWTm8e-olPFvUehPjrDmpjmDlw062Xwysnlj3YUxbYZJNfylneqp9nw8RxWXWsjfvbTUyVNpj760c40JiF-ksGN2iGnQ1WDS76QJav8QVfhFSMVU4nPmlmHMn7"/>
+    </div>
+    <div class="relative z-20 max-w-container-max mx-auto px-lg w-full">
+      <div class="max-w-3xl">
+        <span class="inline-block px-4 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white font-label-sm mb-md tracking-widest">CONTACT US</span>
+        <h1 class="font-h1 text-h1 text-white mb-lg leading-tight">Let's Move Your Business Forward Together</h1>
+        <p class="font-body-lg text-white/80 max-w-xl mb-xl">Connect with the GCC's premier engineering logistics partner. We build the bridges between your vision and global execution.</p>
+      </div>
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-md mt-xl">
+        <div class="glass p-md rounded-xl text-center hover:-translate-y-1 transition-transform">
+          <div class="text-primary font-h2 text-h2 mb-xs">24/7</div>
+          <div class="font-label-sm text-on-surface-variant">Global Support</div>
+        </div>
+        <div class="glass p-md rounded-xl text-center hover:-translate-y-1 transition-transform">
+          <div class="text-primary font-h2 text-h2 mb-xs">10+</div>
+          <div class="font-label-sm text-on-surface-variant">Countries</div>
+        </div>
+        <div class="glass p-md rounded-xl text-center hover:-translate-y-1 transition-transform">
+          <div class="text-primary font-h2 text-h2 mb-xs">5000+</div>
+          <div class="font-label-sm text-on-surface-variant">Shipments</div>
+        </div>
+        <div class="glass p-md rounded-xl text-center hover:-translate-y-1 transition-transform">
+          <div class="text-primary font-h2 text-h2 mb-xs">98%</div>
+          <div class="font-label-sm text-on-surface-variant">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT OVERVIEW ── -->
+  <section class="py-xl bg-white">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="grid md:grid-cols-2 gap-xl items-center">
+        <div class="ct-reveal relative group">
+          <div class="absolute -inset-4 bg-primary/5 rounded-[24px] group-hover:bg-primary/10 transition-colors"></div>
+          <div class="relative overflow-hidden rounded-xl h-[500px]">
+            <img class="w-full h-full object-cover"
+                 alt="Modern glass office overlooking a cargo port"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm9DVqkc2dGsRRGx20SACIMgoBAUCLLZRE0th2eqCjflXmlPrOL59OyYuWGDQU1yc3YvMiq_E8p0rGG2WIEaN9JZlymUF3pNAaEtXNWIS_q8kKcIGiHC7Ydp6_8kZzcnLKAFRc1RANRk5o2hGkuW_BtUn-m7DCwuYGLi8qKBcTaY4SsbRBjmsTBXLnvURwgUztlpsrpfs3ZRwx9m4jX9F2RcVFpGh_3B2qVVyDNyhQF1Sn83FBhOxT6G8fwo29NYOUOep_ywclVxrM"/>
+          </div>
+        </div>
+        <div class="ct-reveal" style="transition-delay:0.15s">
+          <h2 class="font-h2 text-h2 text-primary mb-md">Personalized Excellence in Every Interaction</h2>
+          <p class="font-body-lg text-on-surface-variant mb-xl">At Arkan Arabia, we believe logistics is more than moving cargo; it's about building lasting relationships based on transparency and elite performance.</p>
+          <div class="space-y-md">
+            <div class="flex gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/30">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-primary">timer</span>
+              </div>
+              <div>
+                <h3 class="font-h3 text-[20px] mb-1">Fast Response Guarantee</h3>
+                <p class="text-on-surface-variant font-body-md">Inquiry response within 2 business hours for all enterprise requests.</p>
+              </div>
+            </div>
+            <div class="flex gap-md p-md bg-surface-container-low rounded-xl border border-outline-variant/30">
+              <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-primary">person_check</span>
+              </div>
+              <div>
+                <h3 class="font-h3 text-[20px] mb-1">Dedicated Account Managers</h3>
+                <p class="text-on-surface-variant font-body-md">One point of contact for your entire global supply chain operations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT METHODS ── -->
+  <section class="py-xl bg-surface-container-lowest">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+        <div class="ct-reveal bg-white p-lg rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-lg transition-shadow text-center flex flex-col items-center" style="transition-delay:0.05s">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-primary text-3xl">call</span>
+          </div>
+          <h4 class="font-h3 text-[20px] mb-sm">Call Us</h4>
+          <p class="text-on-surface-variant mb-md">+966 11 000 0000</p>
+          <a class="mt-auto font-label-sm text-primary hover:underline flex items-center gap-xs" href="tel:+966110000000">
+            Call Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="ct-reveal bg-white p-lg rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-lg transition-shadow text-center flex flex-col items-center" style="transition-delay:0.1s">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+          </div>
+          <h4 class="font-h3 text-[20px] mb-sm">Email Us</h4>
+          <p class="text-on-surface-variant mb-md">info@arkanarabia.com</p>
+          <a class="mt-auto font-label-sm text-primary hover:underline flex items-center gap-xs" href="mailto:info@arkanarabia.com">
+            Send Email <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="ct-reveal bg-white p-lg rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-lg transition-shadow text-center flex flex-col items-center" style="transition-delay:0.15s">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-primary text-3xl">chat</span>
+          </div>
+          <h4 class="font-h3 text-[20px] mb-sm">WhatsApp</h4>
+          <p class="text-on-surface-variant mb-md">+966 50 000 0000</p>
+          <a class="mt-auto font-label-sm text-primary hover:underline flex items-center gap-xs" href="#">
+            Message Now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <div class="ct-reveal bg-white p-lg rounded-xl shadow-sm border border-outline-variant/20 hover:shadow-lg transition-shadow text-center flex flex-col items-center" style="transition-delay:0.2s">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+          </div>
+          <h4 class="font-h3 text-[20px] mb-sm">Visit Us</h4>
+          <p class="text-on-surface-variant mb-md">Riyadh Business Dist.</p>
+          <a class="mt-auto font-label-sm text-primary hover:underline flex items-center gap-xs" href="#locations">
+            Find Offices <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT FORM ── -->
+  <section class="py-xl bg-white overflow-hidden">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="grid lg:grid-cols-12 gap-xl">
+
+        <!-- Left: Planning Info -->
+        <div class="lg:col-span-5 space-y-xl ct-reveal">
+          <div>
+            <h2 class="font-h2 text-h2 text-primary mb-md">Start Planning Your Next Shipment</h2>
+            <p class="font-body-lg text-on-surface-variant">Our engineering logistics specialists are ready to design a custom solution for your specific requirements.</p>
+          </div>
+          <div class="relative h-[400px] rounded-xl overflow-hidden shadow-xl">
+            <img class="w-full h-full object-cover"
+                 alt="Logistics planning blueprints and shipping routes"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi7FC9CkrK7nGOJZ97vFnIaA_ucBln7g52hDouIrIHDLQ4pd6eF8N3adpp7XJjwAz6AO80mJt-_gG6T5HbDmZOUZrXUVqXQY8S9vOP3x0oL9owFJTZ8nQKLw6WRsbDiqlZV7F2M-PaBHmNvrzx7LTQST11DcJZdNvhtnBwUM809vGLRh-P6bUkkPTL_qZSHzykT9qTp11j-hMRpwkHb_1Ar7FQGhbXNbwCu7xoJb0P18svMHz5KppfIGtXhtsqCBPXhgeyWsOK7iLm"/>
+          </div>
+          <!-- Experts Online -->
+          <div class="flex gap-md items-center">
+            <div class="flex -space-x-4">
+              <div class="w-12 h-12 rounded-full border-4 border-white bg-surface-container overflow-hidden">
+                <img class="w-full h-full object-cover" alt="Logistics manager"
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuPgMtDFEYwuPmRhmD3oVIlc2GQSLHNWPTjD1hMKzTm4rwaSEBzIYT5zinI-a8Kn6mpgqmn-G-H4o05F7Qcj5PB3gLWKIQhoCrcRlm2RjQ0FBvmlHFevzTatUJH_rrw26IFMlDRUMki7Ipcu-YuqC0EhbvaByffw4Gq8ml7nUx-A_EUeJc-Xw_D0eJ0uui-ISOC40xhY1RmCXx1TknsT_XvYWBtvU6V5m0gYkQnhqoxCVx-xRp5jh41x_AhNw7nMXINp1xUCFsHXFA"/>
+              </div>
+              <div class="w-12 h-12 rounded-full border-4 border-white bg-surface-container overflow-hidden">
+                <img class="w-full h-full object-cover" alt="Logistics executive"
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKNLtlGz_yN6XN2jLX9Wrk560jqtC_GUMrV5vxt2kPh2eCX46c4LpXe1cAFsLCamlcDY_jm_Vmends5XTYw9Iif_4dj8qqkeHlG4KOwyFjPdzrPtawVSHZoFA77D6qb22oAkoFnHgpkPHNa_4d2Frm197Jug7z5xXj8t76L5hkSHZjlVIbXWxi7ZfwQI29D_6HU7S_y05bY_a2fs21CwEsXnprjFjMr1rpRk0X1sX_GSxRPtQNSa9_IIs3cR3XMYkVopeCm1aeeCDV"/>
+              </div>
+              <div class="w-12 h-12 rounded-full border-4 border-white bg-surface-container overflow-hidden">
+                <img class="w-full h-full object-cover" alt="Supply chain specialist"
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK3zIhoWFoksRocaiJPthbQPNySGIbkppqcSPi0Fr_pfsbLs1JAOet-HcRUtEos6nH0LaHFqha0ODFCdEdEUJaDHIrKgwAAJ0Ukj6TfJz8BPRxhtgUJ6Hs5gNpUNyMwYaL4ItXOAc8iWDwHuQiXggyaUnKLe7uiN_Hj06_pksBEOPbSeEU3OVw2fz7-G_aBCwtH7xxOeQOxqAUI9DG_29kw_J-tiNkmv3An4Q78U9TAGHC2DMjcNn6MEw8zR_TkPryNOrWBBRU12WU"/>
+              </div>
+            </div>
+            <div>
+              <div class="font-label-sm text-primary">Experts Online</div>
+              <div class="text-xs text-on-surface-variant">Ready to assist you today.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="lg:col-span-7 ct-reveal" style="transition-delay:0.1s">
+          <div class="bg-surface-container-low p-lg md:p-xl rounded-[24px] border border-outline-variant/30">
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Full Name</label>
+                <input class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="John Doe" type="text" required/>
+              </div>
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Company Name</label>
+                <input class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enterprise Ltd." type="text"/>
+              </div>
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Email Address</label>
+                <input class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="john@company.com" type="email" required/>
+              </div>
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Phone Number</label>
+                <input class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="+966 --- --- ---" type="tel"/>
+              </div>
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Country</label>
+                <select class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                  <option>Saudi Arabia</option>
+                  <option>UAE</option>
+                  <option>Qatar</option>
+                  <option>Kuwait</option>
+                  <option>Oman</option>
+                  <option>Bahrain</option>
+                  <option>International</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">Service Interest</label>
+                <select class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                  <option>Customs Clearance</option>
+                  <option>Land Transport</option>
+                  <option>Project Logistics</option>
+                  <option>Warehousing</option>
+                  <option>Stuffing &amp; Lashing</option>
+                  <option>Cross Border</option>
+                  <option>Terminal Services</option>
+                </select>
+              </div>
+              <div class="md:col-span-2 flex flex-col gap-xs">
+                <label class="font-label-sm text-on-surface-variant ml-1">How can we help?</label>
+                <textarea class="w-full px-md py-3 rounded-lg border border-outline-variant bg-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Describe your project..." rows="4"></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block font-label-sm text-on-surface-variant mb-xs ml-1">Project Documents (Optional)</label>
+                <div class="border-2 border-dashed border-outline-variant/50 rounded-lg p-lg text-center hover:bg-primary/5 cursor-pointer transition-colors">
+                  <span class="material-symbols-outlined text-primary mb-2 block">upload_file</span>
+                  <p class="text-sm text-on-surface-variant">Drop files here or <span class="text-primary font-bold">browse</span></p>
+                </div>
+              </div>
+              <div class="md:col-span-2 mt-md">
+                <button id="submit-btn" type="submit" class="w-full primary-gradient text-white py-4 rounded-lg font-h3 text-[18px] hover:shadow-xl hover:scale-[1.01] transition-all">
+                  Send Inquiry
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OFFICE LOCATIONS & MAP ── -->
+  <section class="py-xl bg-surface-container" id="locations">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="mb-xl text-center ct-reveal">
+        <h2 class="font-h2 text-h2 text-primary mb-sm">Our GCC Network</h2>
+        <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Strategically positioned hubs across the Gulf to ensure seamless cross-border flow.</p>
+      </div>
+      <div class="grid lg:grid-cols-12 gap-lg">
+        <!-- Location Cards -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-md">
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.05s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">Saudi Arabia</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">HQ Riyadh, King Fahd Rd.<br/>Jeddah Port Office<br/>Dammam Logistics Hub</p>
+          </div>
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.1s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">UAE</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Dubai Jebel Ali<br/>Abu Dhabi Port</p>
+          </div>
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.15s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">Qatar</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Doha Industrial Area<br/>Hamad Port</p>
+          </div>
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.2s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">Oman</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Muscat Hub<br/>Salalah Port</p>
+          </div>
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.25s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">Kuwait</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Shuwaikh Port Dist.</p>
+          </div>
+          <div class="ct-reveal bg-white p-md rounded-xl border border-outline-variant/30 hover:border-primary transition-colors cursor-pointer group" style="transition-delay:0.3s">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-h3 text-[18px] text-primary">Bahrain</h4>
+              <span class="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors">hub</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">Manama Logistics Park</p>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="ct-reveal lg:col-span-7 bg-white rounded-xl overflow-hidden shadow-inner relative min-h-[500px]" style="transition-delay:0.1s">
+          <div class="absolute inset-0 bg-primary/5">
+            <img class="w-full h-full object-cover grayscale opacity-40" alt="GCC map"
+                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuABH4bIlF3LxskDloR7-9CizgImIoDE3cFJ1SMdxmX_6Cp1ppAjUkcqpOsqKzork7Z5hKHUU8vn7k4Sr3XyesGHyvYLXcBYTMlaX4jN0PyT9nZcosI3BCvhdMnkZJKfLlgGq0wf1MEzdyN6Di1QisIvqXyx-EAfFycu2SBuudasRqT6jgl4eemZFz034y06wQ-VpbQXPyPKfR8xJAXcN3llFCUaaxm_HpnLKGdQmRQsMNshgDOqX3SV37F4c1bGLnOqjMm4UMcGnNNu"/>
+          </div>
+          <!-- Animated pins -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-[45%] left-[55%] w-4 h-4 bg-primary rounded-full map-pin-pulse pointer-events-auto cursor-pointer" title="Riyadh HQ"></div>
+            <div class="absolute top-[52%] left-[72%] w-3 h-3 bg-primary rounded-full map-pin-pulse pointer-events-auto cursor-pointer" title="Dubai Office"></div>
+            <div class="absolute top-[48%] left-[65%] w-3 h-3 bg-primary rounded-full map-pin-pulse pointer-events-auto cursor-pointer" title="Doha Office"></div>
+          </div>
+          <div class="absolute bottom-md right-md glass p-md rounded-lg max-w-xs shadow-lg">
+            <h5 class="font-bold text-primary mb-1">Global Reach</h5>
+            <p class="text-xs text-on-surface-variant">Connecting Saudi Arabia with over 150+ ports worldwide through our extensive carrier network.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUSINESS HOURS ── -->
+  <section class="py-xl bg-white">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="grid md:grid-cols-2 gap-md">
+        <div class="ct-reveal bg-surface-container-low p-lg rounded-xl flex items-start gap-md">
+          <span class="material-symbols-outlined text-primary text-4xl">schedule</span>
+          <div>
+            <h4 class="font-h3 text-h3 text-primary mb-2">Standard Hours</h4>
+            <p class="font-body-md text-on-surface-variant">Sunday – Thursday: 08:00 – 18:00 (GMT+3)<br/>Friday – Saturday: Limited Support</p>
+          </div>
+        </div>
+        <div class="ct-reveal bg-primary-container p-lg rounded-xl flex items-start gap-md text-white" style="transition-delay:0.1s">
+          <span class="material-symbols-outlined text-on-primary-container text-4xl">support_agent</span>
+          <div>
+            <h4 class="font-h3 text-h3 text-white mb-2">24/7 Emergency Support</h4>
+            <p class="font-body-md opacity-80">Our Control Center is always active. For critical transit emergencies, call our priority line at any time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY CONSULT + FAQ ── -->
+  <section class="py-xl bg-inverse-surface text-white">
+    <div class="max-w-container-max mx-auto px-lg">
+
+      <!-- Why Cards -->
+      <div class="mb-xl">
+        <h2 class="font-h2 text-h2 mb-md ct-reveal">Why Consult with Arkan Arabia?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.05s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">analytics</span>
+            <h4 class="font-h3 text-[20px] mb-2">Data-Driven Planning</h4>
+            <p class="text-on-tertiary-container font-body-md">We use real-time analytics to optimize your routes and reduce operational costs.</p>
+          </div>
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.1s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">gavel</span>
+            <h4 class="font-h3 text-[20px] mb-2">Regulatory Expertise</h4>
+            <p class="text-on-tertiary-container font-body-md">In-depth knowledge of KSA and GCC customs laws ensures 100% compliance.</p>
+          </div>
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.15s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">verified_user</span>
+            <h4 class="font-h3 text-[20px] mb-2">Asset Protection</h4>
+            <p class="text-on-tertiary-container font-body-md">Comprehensive insurance and premium handling for high-value engineering cargo.</p>
+          </div>
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.2s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">hub</span>
+            <h4 class="font-h3 text-[20px] mb-2">Unified Network</h4>
+            <p class="text-on-tertiary-container font-body-md">Single portal access to track all sea, air, and land movements globally.</p>
+          </div>
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.25s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">eco</span>
+            <h4 class="font-h3 text-[20px] mb-2">Sustainability Focus</h4>
+            <p class="text-on-tertiary-container font-body-md">Eco-optimized fleet and green logistics solutions for future-ready brands.</p>
+          </div>
+          <div class="ct-reveal p-lg bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors" style="transition-delay:0.3s">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-4 block">star</span>
+            <h4 class="font-h3 text-[20px] mb-2">Award-Winning Service</h4>
+            <p class="text-on-tertiary-container font-body-md">Consistently recognized for excellence in Saudi Arabia's logistics sector.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="pt-xl border-t border-white/10">
+        <h2 class="font-h2 text-h2 mb-xl ct-reveal">Frequently Asked Questions</h2>
+        <div class="space-y-md max-w-4xl">
+          <details class="ct-reveal group bg-white/5 rounded-xl border border-white/10" open style="transition-delay:0.05s">
+            <summary class="flex justify-between items-center p-md cursor-pointer list-none">
+              <span class="font-h3 text-[18px]">What is the typical response time for a quote?</span>
+              <span class="material-symbols-outlined faq-chevron shrink-0">expand_more</span>
+            </summary>
+            <div class="p-md pt-0 text-on-tertiary-container border-t border-white/5">
+              Our enterprise team usually provides initial quotes within 2–4 business hours for standard GCC routes and within 24 hours for complex international project logistics.
+            </div>
+          </details>
+          <details class="ct-reveal group bg-white/5 rounded-xl border border-white/10" style="transition-delay:0.1s">
+            <summary class="flex justify-between items-center p-md cursor-pointer list-none">
+              <span class="font-h3 text-[18px]">Do you handle customs clearance for international clients?</span>
+              <span class="material-symbols-outlined faq-chevron shrink-0">expand_more</span>
+            </summary>
+            <div class="p-md pt-0 text-on-tertiary-container border-t border-white/5">
+              Yes, we provide end-to-end customs brokerage services in Saudi Arabia, UAE, and Qatar, managing all documentation and duty payments on behalf of our clients.
+            </div>
+          </details>
+          <details class="ct-reveal group bg-white/5 rounded-xl border border-white/10" style="transition-delay:0.15s">
+            <summary class="flex justify-between items-center p-md cursor-pointer list-none">
+              <span class="font-h3 text-[18px]">Can I track my shipment in real-time?</span>
+              <span class="material-symbols-outlined faq-chevron shrink-0">expand_more</span>
+            </summary>
+            <div class="p-md pt-0 text-on-tertiary-container border-t border-white/5">
+              Absolutely. Every shipment is assigned a unique tracking ID and managed through our digital portal with live GPS updates and milestone notifications.
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section class="py-xl">
+    <div class="max-w-container-max mx-auto px-lg">
+      <div class="primary-gradient rounded-[32px] p-xl text-center text-white relative overflow-hidden ct-reveal">
+        <!-- SVG grid lines -->
+        <div class="absolute inset-0 opacity-10">
+          <svg height="100%" preserveAspectRatio="none" viewBox="0 0 100 100" width="100%">
+            <path d="M0 100 L100 0" fill="none" stroke="white" stroke-width="0.5"/>
+            <path d="M0 80 L80 0" fill="none" stroke="white" stroke-width="0.5"/>
+            <path d="M20 100 L100 20" fill="none" stroke="white" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+          <h2 class="font-h1 text-h1 mb-md">Ready To Simplify Your Logistics?</h2>
+          <p class="font-body-lg opacity-80 mb-xl">Join hundreds of industry leaders who trust Arkan Arabia with their most complex logistical challenges.</p>
+          <div class="flex flex-col sm:flex-row gap-md justify-center">
+            <a href="#contact-form" class="px-xl py-4 bg-white text-primary font-h3 text-[18px] rounded-lg hover:shadow-2xl hover:-translate-y-0.5 transition-all">Start Your Quote</a>
+            <a href="tel:+966110000000" class="px-xl py-4 bg-transparent border border-white/30 text-white font-h3 text-[18px] rounded-lg hover:bg-white/10 transition-all">Talk to an Expert</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="../assets/js/script.js"></script>
+  <script>
+    // Scroll reveal
+    const ctObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          ctObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.ct-reveal').forEach(el => ctObserver.observe(el));
+
+    // Form submit handler
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      setTimeout(() => {
+        submitBtn.textContent = '✓ Message Sent';
+        submitBtn.style.background = '#16a34a';
+        setTimeout(() => {
+          submitBtn.textContent = original;
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+          form.reset();
+        }, 3000);
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
