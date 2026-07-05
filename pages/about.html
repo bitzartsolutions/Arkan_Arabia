@@ -149,20 +149,8 @@
 </head>
 <body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 
-  <!-- ════════════════════════════════════════════
-       MOBILE TOP APP BAR  (visible < md)
-  ════════════════════════════════════════════ -->
-  <header class="md:hidden fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
-    <div class="flex justify-between items-center px-md py-sm w-full max-w-container-max mx-auto">
-      <button class="text-primary transition-all active:opacity-70">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-      <div class="font-display-xl text-h3 font-bold text-primary">ARKAN ARABIA</div>
-      <button class="text-primary transition-all active:opacity-70">
-        <span class="material-symbols-outlined">search</span>
-      </button>
-    </div>
-  </header>
+  <!-- ══ MOBILE HEADER + DRAWER (injected, md:hidden) ══ -->
+  <div id="mob-header"></div>
 
   <!-- Desktop shared header (hidden on mobile) -->
   <div id="site-header" class="hidden md:block"></div>
@@ -460,29 +448,8 @@
     </footer>
   </main>
 
-  <!-- Mobile Bottom Navigation Bar -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-lg border-t border-outline-variant/30 flex items-center justify-around px-md z-50">
-    <a href="../index.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
-      <span class="material-symbols-outlined">home</span>
-      <span class="text-[10px]">Home</span>
-    </a>
-    <a href="industries.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
-      <span class="material-symbols-outlined">explore</span>
-      <span class="text-[10px]">Industries</span>
-    </a>
-    <a href="services.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
-      <span class="material-symbols-outlined">local_shipping</span>
-      <span class="text-[10px]">Services</span>
-    </a>
-    <a href="about.html" class="flex flex-col items-center gap-1 text-primary">
-      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">info</span>
-      <span class="text-[10px] font-bold">About</span>
-    </a>
-    <a href="contact.html" class="flex flex-col items-center gap-1 text-on-surface-variant">
-      <span class="material-symbols-outlined">account_circle</span>
-      <span class="text-[10px]">Contact</span>
-    </a>
-  </nav>
+  <!-- ══ MOBILE BOTTOM NAV (injected, md:hidden) ══ -->
+  <div id="mob-nav"></div>
 
   <!-- ════════════════════════════════════════════
        DESKTOP LAYOUT  (visible md +)

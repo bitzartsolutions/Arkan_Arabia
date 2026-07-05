@@ -2,14 +2,15 @@
    Arkan Arabia – Main Script
    ============================================================ */
 
-/* ── 1. Inject shared header & footer ──────────────────────── */
+/* ── 1. Inject shared components ─────────────────────────── */
 async function loadComponent(selector, url) {
   try {
     const res  = await fetch(url);
     let html   = await res.text();
     /* Replace {ROOT} tokens so component links are always correct */
     html = html.replaceAll('{ROOT}', rootPath());
-    document.querySelector(selector).innerHTML = html;
+    const el = document.querySelector(selector);
+    if (el) el.innerHTML = html;
   } catch (e) {
     console.warn(`Could not load component: ${url}`, e);
   }
@@ -17,25 +18,75 @@ async function loadComponent(selector, url) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await Promise.all([
-    loadComponent('#site-header', rootPath() + 'components/header.html'),
-    loadComponent('#site-footer', rootPath() + 'components/footer.html'),
+    loadComponent('#site-header',  rootPath() + 'components/header.html'),
+    loadComponent('#site-footer',  rootPath() + 'components/footer.html'),
+    loadComponent('#mob-header',   rootPath() + 'components/mobile-header.html'),
+    loadComponent('#mob-nav',      rootPath() + 'components/mobile-nav.html'),
   ]);
 
   initNav();
   initReveal();
   initCounters();
   highlightActiveNav();
+  initMobileNav();       /* highlight active mobile drawer + bottom nav link */
+  initMobileDrawer();    /* wire hamburger & overlay after HTML is injected  */
 });
 
 /* Determine root path relative to current page depth */
 function rootPath() {
-  const depth = location.pathname.split('/').filter(Boolean).length;
-  /* In a flat or root-served project depth is usually 0-1 */
   if (location.pathname.includes('/pages/')) return '../';
   return './';
 }
 
-/* ── 2. Sticky Navbar ───────────────────────────────────────── */
+/* ── 2. Mobile Drawer ───────────────────────────────────── */
+function initMobileDrawer() {
+  const btn = document.getElementById('mob-hamburger');
+  if (btn) btn.addEventListener('click', openMobDrawer);
+}
+
+function openMobDrawer() {
+  const drawer  = document.getElementById('mob-drawer');
+  const overlay = document.getElementById('mob-overlay');
+  if (drawer)  { drawer.style.transform  = 'translateX(0)'; }
+  if (overlay) { overlay.classList.remove('hidden'); }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobDrawer() {
+  const drawer  = document.getElementById('mob-drawer');
+  const overlay = document.getElementById('mob-overlay');
+  if (drawer)  { drawer.style.transform  = 'translateX(-100%)'; }
+  if (overlay) { overlay.classList.add('hidden'); }
+  document.body.style.overflow = '';
+}
+
+/* ── 3. Mobile Active Nav ──────────────────────────────── */
+function initMobileNav() {
+  const page = location.pathname.split('/').pop() || 'index.html';
+
+  /* Bottom nav links */
+  document.querySelectorAll('.mob-nav-link').forEach(link => {
+    const key = (link.getAttribute('data-mob-nav') || '').split('/').pop();
+    if (key === page) {
+      link.classList.remove('text-on-surface-variant');
+      link.classList.add('text-primary');
+      /* filled icon for active */
+      const icon = link.querySelector('.mob-nav-icon');
+      if (icon) icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+    }
+  });
+
+  /* Drawer links */
+  document.querySelectorAll('.mob-drawer-link').forEach(link => {
+    const key = (link.getAttribute('data-mob-nav') || '').split('/').pop();
+    if (key === page) {
+      link.classList.remove('text-on-surface-variant');
+      link.classList.add('text-primary', 'bg-primary-container/10');
+    }
+  });
+}
+
+/* ── 4. Sticky Desktop Navbar ───────────────────────────── */
 function initNav() {
   const nav = document.getElementById('main-nav');
   if (!nav) return;
@@ -60,17 +111,15 @@ function initNav() {
     }
   }, { passive: true });
 
-  /* Mobile menu toggle */
-  const menuBtn  = document.getElementById('mobile-menu-btn');
+  /* Desktop mobile-menu toggle (inside header.html) */
+  const menuBtn    = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
   }
 }
 
-/* ── 3. Scroll Reveal ───────────────────────────────────────── */
+/* ── 5. Scroll Reveal ───────────────────────────────────── */
 function initReveal() {
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }),
@@ -79,7 +128,7 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-/* ── 4. Animated Counters ───────────────────────────────────── */
+/* ── 6. Animated Counters ───────────────────────────────── */
 function initCounters() {
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -107,7 +156,7 @@ function initCounters() {
   document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
 }
 
-/* ── 5. Highlight active nav link ───────────────────────────── */
+/* ── 7. Highlight active desktop nav link ───────────────── */
 function highlightActiveNav() {
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link').forEach(link => {
@@ -116,7 +165,7 @@ function highlightActiveNav() {
   });
 }
 
-/* ── 6. Fleet carousel buttons ─────────────────────────────── */
+/* ── 8. Fleet carousel buttons ──────────────────────────── */
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('[data-fleet-prev], [data-fleet-next]');
   if (!btn) return;
